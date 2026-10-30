@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 9 - Dona Aurora</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">✦ GRADE 9 | AURORA</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#officers">Officers</a>
+      <a href="#classmates">Classmates</a>
+      <a href="#announcements">News</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="home">
+    <span class="tag">WELCOME TO OUR CLASS</span>
+    <h1>GRADE 9<br><span>DONA AURORA</span></h1>
+    <p>
+      Different personalities, one family.
+      Together we learn, grow, create memories,
+      and reach our dreams.
+    </p>
+    <a class="button" href="#officers">Meet Our Class</a>
+  </div>
+
+  <main>
+    <section id="about">
+      <div class="section-heading">
+        <h2>✦ Our Section</h2>
+        <p>A place to learn, belong, and grow together.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <h3 id="studentCount">0</h3>
+          <p>Classmates listed</p>
+        </div>
+        <div class="stat">
+          <h3 id="officerCount">0</h3>
+          <p>Class officers</p>
+        </div>
+        <div class="stat">
+          <h3>∞</h3>
+          <p>Memories to make</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="officers">
+      <div class="section-heading">
+        <h2>♛ Class Officers</h2>
+        <p>The students who help lead our class.</p>
+      </div>
+      <div class="grid" id="officerGrid"></div>
+    </section>
+
+    <section id="classmates">
+      <div class="section-heading">
+        <h2>♡ Our Classmates</h2>
+        <p>Meet the people who make our section special.</p>
+      </div>
+
+      <input
+        class="search"
+        id="searchInput"
+        type="search"
+        placeholder="Search classmates by name..."
+        aria-label="Search classmates"
+      >
+
+      <div class="grid" id="classmateGrid"></div>
+      <p class="empty" id="emptyMessage" hidden>
+        No classmates found. Try another name.
+      </p>
+    </section>
+
+    <section id="announcements">
+      <div class="section-heading">
+        <h2>📢 Class Announcements</h2>
+        <p>Important reminders for our section.</p>
+      </div>
+
+      <div class="announcement">
+        <h3>Welcome, Dona Aurora!</h3>
+        <p>
+          Let's make this school year productive,
+          memorable, and full of teamwork.
+          Always remember to respect one another,and get ready for the English Festival on October 20 2026,to be followed by the United Nations on October 23 2026.
+        </p>
+        <span class="date">CLASS REMINDER</span>
+      </div>
+
+      <div class="announcement">
+        <h3>Stay Updated</h3>
+        <p>
+          Add your real assignments, activities,
+          deadlines, and school announcements here.
+        </p>
+        <span class="date">GENERAL NOTICE</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made with ♡ by Grade 9 - Dona Aurora</p>
+    <p>Learn together. Shine together. ✨</p>
+  </footer>
+
+  <script>
+    // EDIT THESE SAMPLE NAMES TO MATCH YOUR CLASS.
+
+    const officers = [
+      { name: "Rachelle Joy Hugno", position: "President" },
+      { name: "Mark Angelo G.Buñag", position: "Vice President" },
+      { name: "Precious H.Garcia", position: "Secretary" },
+      { name: "Adelline D.Paglinawan", position: "Treasurer" },
+      { name: "Arianne C.Ilao", position: "Auditor" },
+      { name: "Raphael Samuel A.Diasnes", position: "Bussiness Manager"},
+      { name: "Jewel Heart M.Abucal", position: "Bussiness Manager"},
+      { name: "Heart D.Sanchez", position: "Pio"},
+      { name: "Trisha A.Saez", position: "Pio"},
+      { name: "Kaitlyn Chloe R.Abling", position: "P.O"},
+      { name: "Reniel N.Delos Reyes", position: "P.O"},
+    ];
+
+    const classmates = [
+      "Aday, Ralf Owen D.",
+      "Antenor,Lance Matthew Y.",
+      "Atienza,John Vicent D.",
+      "Baquirin,Angelo Emil M.",
+      "Buñag,Bebedict V.",
+      "Buñag,Mark Angelo G.",
+      "Ciprez,Prince Daryl A.",
+      "Delos Reyes,Reniel N.",
+      "Diasnes,Raphael Samuel A.",
+      "Garilao,Aldren S.",
+      "Jimenez,Jhon David B.",
+      "Macalindol,Rein Lawrence S.",
+      "Magallanes,Prince Kenneth",
+      "Masuba,John Rafael S.",
+      "Matira,Mark Jonard S.",
+      "Reyonda,Von Lhester H.",
+      "Rodriguez,Jaynard P.",
+      "Rogelio,Lester Lloyd M.",
+      "Sabalvaro,Kent Ashier L.",
+      "Sanggalang,Jan Laurence I.",
+      "Sena,John Rey V.",
+      "Seno,John Cynel R.",
+      "Abling,Kaitlyn Chloe R.",
+      "Abucal,Jewel Heart M.",
+      "Andal,Mattaniah Grace N.",
+      "Garcia,Precious H.",
+      "Hugno,Rachell Joy S.",
+      "Ilao,Arianne C.",
+      "Imbang,Keithlyn P.",
+      "Miguel,Mary Ann",
+      "Mira,Jenzel Mae D.",
+      "Paglinawan,Adelline D.",
+      "Saez,Trisha A.",
+      "Sanchez,Heart D.",
+      "Suarez,Queencel D.",
+      ];
+
+    // Create initials for each student's avatar.
+    function getInitials(name) {
+      return name
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2)
+        .map(word => word[0])
+        .join("")
+        .toUpperCase();
+    }
+
+    // Create a student card safely.
+    function createCard(name, subtitle, isOfficer = false) {
+      const card = document.createElement("article");
+      card.className = "card";
+
+      const avatar = document.createElement("div");
+      avatar.className = "avatar";
+      avatar.textContent = getInitials(name) || "?";
+
+      const heading = document.createElement("h3");
+      heading.textContent = name;
+
+      const label = document.createElement("span");
+      label.className = "position";
+      label.textContent = subtitle;
+
+      const description = document.createElement("p");
+      description.textContent = isOfficer
+        ? "Serving our class with responsibility."
+        : "A valued member of Dona Aurora.";
+
+      card.append(avatar, heading, label, description);
+      return card;
+    }
+
+    // Display officers.
+    const officerGrid = document.getElementById("officerGrid");
+
+    officers.forEach(officer => {
+      officerGrid.appendChild(
+        createCard(officer.name, officer.position, true)
+      );
+    });
+
+    // Display classmates and enable search.
+    const classmateGrid = document.getElementById("classmateGrid");
+    const searchInput = document.getElementById("searchInput");
+    const emptyMessage = document.getElementById("emptyMessage");
+
+    function renderClassmates(query = "") {
+      classmateGrid.replaceChildren();
+
+      const filtered = classmates.filter(name =>
+        name.toLowerCase().includes(query.toLowerCase().trim())
+      );
+
+      filtered.forEach(name => {
+        classmateGrid.appendChild(
+          createCard(name, "Classmate")
+        );
+      });
+
+      emptyMessage.hidden = filtered.length !== 0;
+    }
+
+    searchInput.addEventListener("input", event => {
+      renderClassmates(event.target.value);
+    });
+
+    // Update the section statistics automatically.
+    document.getElementById("studentCount").textContent =
+      classmates.length;
+
+    document.getElementById("officerCount").textContent =
+      officers.length;
+
+    renderClassmates();
+  </script>
+</body>
+</html>
